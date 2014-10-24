@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "Ship.h"
+#include "Board.h"
 using namespace std;
 class Player
 {
@@ -15,5 +16,6 @@ protected:
 	int numberOfShips;
 	int numberOfAliveShips;
 	vector <Ship> listOfShips;
+	Board board;
 };
 

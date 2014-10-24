@@ -9,5 +9,6 @@ public:
 	static GameManager *GetGameManager();
 	void PrepareGame();
 	
+	
 };
 
