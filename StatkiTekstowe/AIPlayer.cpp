@@ -16,20 +16,14 @@ void AIPlayer::setShips(){
 	setShip(5);
 }
 void AIPlayer::setShip(int size){
-	int x, y;
-	do
-	{
+	int x, y;	
+	Ship* newShip;
+	do{
 		x = rand() % 16;
 		y = rand() % 16;
-	}
-	while (board.IsSquareFree(x, y));
-
-	while (board.NewShipOrNull(x,y)==NULL)
-	{
-
-	}
-
-
+	} while (board.IsSquareFree(x, y) && (newShip = board.NewShipOrNull(x, y, size)) == NULL);
+	
+	
 
 
 }

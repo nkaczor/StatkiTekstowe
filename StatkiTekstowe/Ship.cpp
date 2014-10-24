@@ -1,7 +1,7 @@
 #include "Ship.h"
 
 
-Ship::Ship()
+Ship::Ship(list <pair<int, int>*> squares)
 {
 }
 
