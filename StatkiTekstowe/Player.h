@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <list>
+#include <vector>
 #include "Ship.h"
 using namespace std;
 class Player
@@ -9,8 +9,11 @@ public:
 	Player(string name);
 	~Player();
 	void AddShip(Ship ship);
-private:
+	bool IsEnableToPlay();
+protected:
 	string name;
-	list <Ship> listOfShips;
+	int numberOfShips;
+	int numberOfAliveShips;
+	vector <Ship> listOfShips;
 };
 

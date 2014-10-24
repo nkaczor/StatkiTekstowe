@@ -1,4 +1,5 @@
 #pragma once
+#include "Player.h"
 class Square
 {
 public:
@@ -8,6 +9,6 @@ public:
 	bool isFinished();
 private:
 	int state;
-	Player *owner;
+	//Player* owner;
 };
 

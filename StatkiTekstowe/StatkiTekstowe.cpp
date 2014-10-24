@@ -4,11 +4,23 @@
 #include "stdafx.h"
 #include <iostream>
 #include <string>
+#include "GameManager.h"
 using namespace std;
 int _tmain(int argc, _TCHAR* argv[])
 {
-	cout << "Hello";
+	GameManager *game = GameManager::GetGameManager();
+	game->PrepareGame();
+	game->StartGame();
+	game->ShowResults();
+	string name;
+	cout << "Witaj graczu! Napisz jak masz na imiê";
+	cin >> name;
+	cout << "Ustaw swoje statki";
+
+	Player *you = new Player(name);
+
 	getchar();
+
 	return 0;
 }
 
