@@ -2,11 +2,15 @@
 #include <iostream>
 using namespace std;
 
+Player::Player()
+{
+
+}
 Player::Player(string name)
 {
 	this->numberOfShips = 0;
 	setShips();
-	cout << "Twoja plansza wyglada tak:" << endl;
+	cout << "Twoja plansza wyglada tak:" <<  endl;
 	board.ShowBoard();
 	numberOfAliveShips = numberOfShips;
 }
@@ -15,7 +19,7 @@ bool Player::IsAlive(){
 	else return false;
 
 }
-void Player::MakeMove(){
+void Player::MakeMove(Player *opponent){
 		int x, y;
 		cout << "Podaj wspolrzedne celu x <1,10>, y <1,10>" << endl;
 		cin >> x >> y;
@@ -23,8 +27,8 @@ void Player::MakeMove(){
 			cout << "Z tymi danymi jest cos nie tak. Podaj jeszcze raz x i y" << endl;
 			cin >> x >> y;
 		}
-		while (!oboard.IsHidden(x - 1, y - 1)){
-			cout << "To pole zosta³o ju¿ odkryte. Jego stan to: " << oboard.StateToString(x, y) << endl;
+		while (!opponent->board.IsHidden(x - 1, y - 1)){
+			cout << "To pole zosta³o ju¿ odkryte. Jego stan to: " << opponent->board.StateToString(x-1, y-1) << endl;
 			cout << "Podaj nowe wspolrzedne" << endl;
 			cin >> x >> y;
 			while (x < 1 || x>10 || y < 1 || y>10){
@@ -32,7 +36,9 @@ void Player::MakeMove(){
 				cin >> x >> y;
 			}
 		}
+		x--; y--;
 
+		cout<<opponent->board.OnShot(x, y);
 
 
 }
@@ -40,10 +46,10 @@ void Player::setShips(){
 
 	setShip(3);
 	setShip(3);
-	setShip(2);
+	/*setShip(2);
 	setShip(4);
 	setShip(5);
-	setShip(6);
+	setShip(6);*/
 
 }
 void Player::setShip(int size){
@@ -83,8 +89,8 @@ void Player::setShip(int size){
 					if (!board.IsSquareFree(x + i, y)){ state = false; squares.clear(); }
 					else squares.push_back(new pair<int, int>(x + i, y));
 			}
-			newShip = new Ship(squares);
-			board.SetSquares(squares);
+			newShip = new Ship(size);
+			board.SetSquares(squares, newShip);
 			this->listOfShips.push_back(*newShip);
 			this->numberOfShips++;
 	}
@@ -113,8 +119,8 @@ void Player::setShip(int size){
 					if (!board.IsSquareFree(x, y + i)){ state = false; squares.clear(); }
 					else squares.push_back(new pair<int, int>(x, y + i));
 			}
-			newShip = new Ship(squares);
-			board.SetSquares(squares);
+			newShip = new Ship(size);
+			board.SetSquares(squares,newShip);
 			this->listOfShips.push_back(*newShip);
 			this->numberOfShips++;
 

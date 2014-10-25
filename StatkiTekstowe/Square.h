@@ -1,16 +1,20 @@
 #pragma once
-
+#include <string>
+#include "Ship.h"
+using namespace std;
 class Square
 {
 public:
 	Square();
 	~Square();
 	bool IsEmpty();
-	bool IsFinished();
-	void MarkAsOccupied();
+	bool IsHidden();
+	void MarkAsOccupied(Ship * ship);
+	string StateToString();
+	void Shot();
 private:
-	int state;
+	bool hidden;
 	bool occupied;
-	//Player* owner;
+	Ship* ship;
 };
 

@@ -23,9 +23,9 @@ void GameManager::PrepareGame(){
 	Player *you = new Player(name);
 	AIPlayer *computer = new AIPlayer();
 	while (you->IsAlive() && computer->IsAlive()){
-		you->MakeMove();
+		you->MakeMove(computer);
 		if (computer->IsAlive() == false) break;
-		computer->MakeMove();
+		computer->MakeMove(you);
 	
 	}
 

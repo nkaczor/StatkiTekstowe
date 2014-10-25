@@ -1,17 +1,19 @@
 #pragma once
 
-#include "Square.h"
+
 #include <list>
 using namespace std;
 class Ship
 {
 public:
-	Ship(list <pair<int, int>*> squares);
+	Ship(int size);
 	~Ship();
-	bool isAlive();
+	bool IsAlive();
+	void OnShot();
 private:
-	bool alive;
+	
 	int size;
-	list<Square> listOfSquares;
+	int untouchedSquares;
+	
 };
 

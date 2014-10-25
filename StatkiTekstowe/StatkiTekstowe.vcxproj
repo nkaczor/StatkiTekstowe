@@ -84,7 +84,6 @@
     <ClInclude Include="AIPlayer.h" />
     <ClInclude Include="Board.h" />
     <ClInclude Include="GameManager.h" />
-    <ClInclude Include="OpponentsBoard.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="Square.h" />
@@ -95,7 +94,6 @@
     <ClCompile Include="AIPlayer.cpp" />
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="GameManager.cpp" />
-    <ClCompile Include="OpponentsBoard.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Square.cpp" />

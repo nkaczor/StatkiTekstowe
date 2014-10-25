@@ -1,14 +1,19 @@
 #include "AIPlayer.h"
 
 
-AIPlayer::AIPlayer() : Player("Computer")
+AIPlayer::AIPlayer() 
 {
+	name = "Computer";
 	setShips();
 	//board.ShowBoard(); //tylko do celow diagnostycznych
 	numberOfAliveShips = numberOfShips;
 }
 
+void AIPlayer::MakeMove(Player *opponent){
+	
 
+
+}
 void AIPlayer::setShip(int size){
 	int x, y;
 	Ship* newShip = NULL;

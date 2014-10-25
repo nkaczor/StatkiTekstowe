@@ -10,7 +10,10 @@ public:
 	bool IsSquareFree(int x, int y);
 	Ship* NewShipOrNull(int x, int y, int size);
 	void ShowBoard();
-	void SetSquares(list <pair<int, int>*> squares);
+	void SetSquares(list <pair<int, int>*> squares, Ship* ship);
+	bool IsHidden(int x, int y);
+	string StateToString(int x, int y);
+	string OnShot(int x, int y);
 private:
 	Square squaresTable[10][10];
 	
