@@ -3,6 +3,7 @@
 
 Player::Player(string name)
 {
+	this->numberOfShips = 0;
 }
 
 
