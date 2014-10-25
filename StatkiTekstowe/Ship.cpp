@@ -3,6 +3,8 @@
 
 Ship::Ship(list <pair<int, int>*> squares)
 {
+
+
 }
 
 

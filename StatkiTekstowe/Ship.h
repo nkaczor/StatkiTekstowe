@@ -12,6 +12,6 @@ public:
 private:
 	bool alive;
 	int size;
-	Square *listOfSquares;
+	list<Square> listOfSquares;
 };
 

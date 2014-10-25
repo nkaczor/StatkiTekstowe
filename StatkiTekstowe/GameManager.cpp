@@ -18,9 +18,11 @@ GameManager* GameManager::GetGameManager()
 
 void GameManager::PrepareGame(){
 	string name;
-	cout << "Witaj w grze w statki :) Podaj swoje imiê aby rozpocz¹æ grê";
+	cout << "Witaj w grze w statki :) Podaj swoje imie aby rozpoczac gre"<<endl;
+	cin >> name;
 	Player *you = new Player(name);
 	AIPlayer *computer = new AIPlayer();
+	
 
 }
 GameManager::~GameManager()

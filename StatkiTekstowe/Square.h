@@ -1,12 +1,12 @@
 #pragma once
-#include "Player.h"
+
 class Square
 {
 public:
 	Square();
 	~Square();
-	bool isEmpty();
-	bool isFinished();
+	bool IsEmpty();
+	bool IsFinished();
 	void MarkAsOccupied();
 private:
 	int state;

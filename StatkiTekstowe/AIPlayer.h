@@ -7,7 +7,7 @@ public:
 	~AIPlayer();
 	
 private:
-	void setShips();
+	
 	void setShip(int size);
 };
 

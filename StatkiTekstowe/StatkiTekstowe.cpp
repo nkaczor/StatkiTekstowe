@@ -10,16 +10,11 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	GameManager *game = GameManager::GetGameManager();
 	game->PrepareGame();
-	game->StartGame();
-	game->ShowResults();
-	string name;
-	cout << "Witaj graczu! Napisz jak masz na imiê";
-	cin >> name;
-	cout << "Ustaw swoje statki";
+//	game->StartGame();
+	//game->ShowResults();
 
-	Player *you = new Player(name);
 
-	getchar();
+	system("pause");
 
 	return 0;
 }

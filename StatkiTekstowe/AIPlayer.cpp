@@ -4,27 +4,23 @@
 AIPlayer::AIPlayer() : Player("Computer")
 {
 	setShips();
-	
+	board.ShowBoard();
 }
 
-void AIPlayer::setShips(){
-	setShip(3);
-	setShip(3);
-	setShip(4);
-	setShip(4);
-	setShip(4);
-	setShip(5);
-	setShip(5);
-}
+
 void AIPlayer::setShip(int size){
 	int x, y;	
-	Ship* newShip;
+	Ship* newShip=NULL;
 	do{
-		x = rand() % 16;
-		y = rand() % 16;
-	} while (board.IsSquareFree(x, y) && (newShip = board.NewShipOrNull(x, y, size)) == NULL);
+		do{
+			x = rand() % 10;
+			y = rand() % 10;
+		} while (!board.IsSquareFree(x, y));
+
+	} while ((newShip = board.NewShipOrNull(x, y, size)) == NULL);
 	
-	this->listOfShips.push_back(*newShip);
+	
+		this->listOfShips.push_back(*newShip);
 	this->numberOfShips++;
 
 
