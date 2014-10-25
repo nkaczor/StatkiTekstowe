@@ -10,8 +10,9 @@ public:
 	bool IsSquareFree(int x, int y);
 	Ship* NewShipOrNull(int x, int y, int size);
 	void ShowBoard();
+	void SetSquares(list <pair<int, int>*> squares);
 private:
 	Square squaresTable[10][10];
-	void setSquares(list <pair<int, int>*> squares);
+	
 };
 

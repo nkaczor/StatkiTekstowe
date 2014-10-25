@@ -29,7 +29,7 @@ bool Board::IsSquareFree(int x, int y){
 	else if (y>0 && x < 9 && !squaresTable[x + 1][y - 1].IsEmpty()) return 0;
 	return true;
 }
-void Board::setSquares(list <pair<int, int>*> squares){
+void Board::SetSquares(list <pair<int, int>*> squares){
 	for each (pair<int, int>* point in squares)
 	{
 		this->squaresTable[point->first][point->second].MarkAsOccupied();
@@ -43,27 +43,27 @@ Ship* Board::NewShipOrNull(int x, int y, int size){
 		for (int i = 0; i < size; i++)
 			if (!IsSquareFree(x + i, y)){ squares.clear(); state = false;  break; }
 			else squares.push_back(new pair<int, int>(x + i, y));
-			if (state) { setSquares(squares);  return new Ship(squares); }
+			if (state) { SetSquares(squares);  return new Ship(squares); }
 	}
 	
 	if (y + 1 - size >= 0){
 		for (int i = 0; i < size; i++)
 			if (!IsSquareFree(x, y - i)){ squares.clear(); state = false;  break; }
 			else squares.push_back(new pair<int, int>(x, y - i));
-			if (state) { setSquares(squares); return new Ship(squares); }
+			if (state) { SetSquares(squares); return new Ship(squares); }
 	}
 	if (x - size + 1 >= 0){
 		for (int i = 0; i < size; i++)
 			if (!IsSquareFree(x - i, y)){ squares.clear(); state = false;  break; }
 			else squares.push_back(new pair<int, int>(x - i, y));
-			if (state) { setSquares(squares); return new Ship(squares); }
+			if (state) { SetSquares(squares); return new Ship(squares); }
 
 	}
 	if (y + size <= 10){
 		for (int i = 0; i < size; i++)
 			if (!IsSquareFree(x, y + i)){ squares.clear(); state = false;  break; }
 			else squares.push_back(new pair<int, int>(x, y + i));
-			if (state) { setSquares(squares); return new Ship(squares); }
+			if (state) { SetSquares(squares); return new Ship(squares); }
 
 	}
 	return NULL;
