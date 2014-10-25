@@ -9,6 +9,6 @@ public:
 private:
 	
 	void setShip(int size);
-	
+	bool haveTarget;
 };
 

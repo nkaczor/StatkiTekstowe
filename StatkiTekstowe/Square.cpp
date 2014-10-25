@@ -17,6 +17,10 @@ bool Square::IsEmpty(){
 	return !this->occupied;
 
 }
+bool Square::IsOccupied(){
+	return this->occupied;
+
+}
 void Square::Shot(){
 	this->hidden = false;
 	if (this->occupied) {

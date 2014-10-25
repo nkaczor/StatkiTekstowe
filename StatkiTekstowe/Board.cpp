@@ -5,12 +5,14 @@ using namespace std;
 
 Board::Board()
 {
-
+	NumberOfAliveShips = 0;
 
 }
-string Board::OnShot(int x, int y){
+
+bool Board::OnShot(int x, int y){
 	this->squaresTable[x][y].Shot();
-	return this->squaresTable[x][y].StateToString();
+	cout<<this->squaresTable[x][y].StateToString();
+	return this->squaresTable[x][y].IsOccupied();
 }
 void Board::ShowBoard(){
 	for (int i = 0; i < 10; i++){
@@ -47,6 +49,7 @@ void Board::SetSquares(list <pair<int, int>*> squares, Ship *ship){
 		this->squaresTable[point->first][point->second].MarkAsOccupied(ship);
 
 	}
+	NumberOfAliveShips++;
 
 }
 Ship* Board::NewShipOrNull(int x, int y, int size){

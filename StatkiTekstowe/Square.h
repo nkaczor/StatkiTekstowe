@@ -8,6 +8,7 @@ public:
 	Square();
 	~Square();
 	bool IsEmpty();
+	bool IsOccupied();
 	bool IsHidden();
 	void MarkAsOccupied(Ship * ship);
 	string StateToString();

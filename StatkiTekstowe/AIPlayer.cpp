@@ -1,17 +1,29 @@
 #include "AIPlayer.h"
+#include <iostream>
+using namespace std;
 
 
 AIPlayer::AIPlayer() 
 {
 	name = "Computer";
 	setShips();
+	this->haveTarget = false;
 	//board.ShowBoard(); //tylko do celow diagnostycznych
-	numberOfAliveShips = numberOfShips;
+	
 }
 
 void AIPlayer::MakeMove(Player *opponent){
+	int x, y;
+	if (!haveTarget) {
+		
+			do{
+				x = rand() % 10;
+				y = rand() % 10;
+			} while (!opponent->board.IsHidden(x,y));
 	
 
+	}
+	if (opponent->board.OnShot(x, y)) this->haveTarget = true;
 
 }
 void AIPlayer::setShip(int size){

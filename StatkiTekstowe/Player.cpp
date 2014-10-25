@@ -12,11 +12,13 @@ Player::Player(string name)
 	setShips();
 	cout << "Twoja plansza wyglada tak:" <<  endl;
 	board.ShowBoard();
-	numberOfAliveShips = numberOfShips;
+	
 }
+
 bool Player::IsAlive(){
-	if (numberOfAliveShips > 0) return true;
-	else return false;
+	if (board.NumberOfAliveShips > 0)
+		return true;
+	return false;
 
 }
 void Player::MakeMove(Player *opponent){
@@ -38,7 +40,7 @@ void Player::MakeMove(Player *opponent){
 		}
 		x--; y--;
 
-		cout<<opponent->board.OnShot(x, y);
+		opponent->board.OnShot(x, y);
 
 
 }
