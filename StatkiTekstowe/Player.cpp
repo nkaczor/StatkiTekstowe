@@ -6,17 +6,44 @@ Player::Player(string name)
 {
 	this->numberOfShips = 0;
 	setShips();
+	cout << "Twoja plansza wyglada tak:" << endl;
 	board.ShowBoard();
+	numberOfAliveShips = numberOfShips;
 }
+bool Player::IsAlive(){
+	if (numberOfAliveShips > 0) return true;
+	else return false;
 
+}
+void Player::MakeMove(){
+		int x, y;
+		cout << "Podaj wspolrzedne celu x <1,10>, y <1,10>" << endl;
+		cin >> x >> y;
+		while (x < 1 || x>10 || y < 1 || y>10){
+			cout << "Z tymi danymi jest cos nie tak. Podaj jeszcze raz x i y" << endl;
+			cin >> x >> y;
+		}
+		while (!oboard.IsHidden(x - 1, y - 1)){
+			cout << "To pole zosta³o ju¿ odkryte. Jego stan to: " << oboard.StateToString(x, y) << endl;
+			cout << "Podaj nowe wspolrzedne" << endl;
+			cin >> x >> y;
+			while (x < 1 || x>10 || y < 1 || y>10){
+				cout << "Z tymi danymi jest cos nie tak. Podaj jeszcze raz x i y" << endl;
+				cin >> x >> y;
+			}
+		}
+
+
+
+}
 void Player::setShips(){
 
 	setShip(3);
 	setShip(3);
-	/*setShip(2);
+	setShip(2);
 	setShip(4);
 	setShip(5);
-	setShip(6);*/
+	setShip(6);
 
 }
 void Player::setShip(int size){
@@ -47,7 +74,7 @@ void Player::setShip(int size){
 			else squares.push_back(new pair<int, int>(x + i, y));
 
 			while (state == false){
-				cout << "Niestety w tym miejscu nie mo¿na ustawiæ tego statku." << endl;
+				cout << "Niestety w tym miejscu nie mozna ustawic tego statku." << endl;
 				cout << "Podaj nowe wspolrzedne" << endl; //TODO walidacja
 				cin >> x >> y;
 				state = true;
@@ -76,10 +103,10 @@ void Player::setShip(int size){
 			else squares.push_back(new pair<int, int>(x, y + i));
 
 			while (state == false){
-				cout << "Niestety w tym miejscu nie mo¿na ustawiæ tego statku." << endl;
+				cout << "Niestety w tym miejscu nie mozna ustawic tego statku." << endl;
 				cout << "Podaj nowe wspolrzedne" << endl; //TODO walidacja
 				cin >> x >> y;
-				
+
 				state = true;
 				x--; y--;
 				for (int i = 0; i < size; i++)

@@ -22,7 +22,12 @@ void GameManager::PrepareGame(){
 	cin >> name;
 	Player *you = new Player(name);
 	AIPlayer *computer = new AIPlayer();
+	while (you->IsAlive() && computer->IsAlive()){
+		you->MakeMove();
+		if (computer->IsAlive() == false) break;
+		computer->MakeMove();
 	
+	}
 
 }
 GameManager::~GameManager()

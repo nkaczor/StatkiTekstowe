@@ -1,6 +1,6 @@
 #pragma once
 #include "Player.h"
-class AIPlayer : Player
+class AIPlayer : public Player
 {
 public:
 	AIPlayer();
