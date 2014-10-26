@@ -9,10 +9,10 @@ Board::Board()
 
 }
 
-bool Board::OnShot(int x, int y){
-	this->squaresTable[x][y].Shot();
-	cout<<this->squaresTable[x][y].StateToString();
-	return this->squaresTable[x][y].IsOccupied();
+int Board::OnShot(int x, int y){ //-1 pudlo 0 trafiony 1 trafiony zatopiony
+	cout << this->squaresTable[x][y].StateToString();
+	return this->squaresTable[x][y].Shot();
+
 }
 void Board::ShowBoard(){
 	for (int i = 0; i < 10; i++){

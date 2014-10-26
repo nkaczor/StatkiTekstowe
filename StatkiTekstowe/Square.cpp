@@ -21,12 +21,14 @@ bool Square::IsOccupied(){
 	return this->occupied;
 
 }
-void Square::Shot(){
+int Square::Shot(){
 	this->hidden = false;
 	if (this->occupied) {
 		this->ship->OnShot();
-		if (!this->ship->IsAlive()) cout << "ZATOPIONY!" << endl;
+		if (!this->ship->IsAlive()) { cout << "ZATOPIONY!" << endl; return 1; }
+		return 0;
 	}
+	else return -1;
 }
 bool Square::IsHidden(){
 	return this->hidden;

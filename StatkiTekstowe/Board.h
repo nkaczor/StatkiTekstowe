@@ -13,7 +13,7 @@ public:
 	void SetSquares(list <pair<int, int>*> squares, Ship* ship);
 	bool IsHidden(int x, int y);
 	string StateToString(int x, int y);
-	bool OnShot(int x, int y);
+	int OnShot(int x, int y);
 	int NumberOfAliveShips;
 private:
 	Square squaresTable[10][10];

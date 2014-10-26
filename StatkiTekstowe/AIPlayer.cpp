@@ -19,11 +19,27 @@ void AIPlayer::MakeMove(Player *opponent){
 			do{
 				x = rand() % 10;
 				y = rand() % 10;
-			} while (!opponent->board.IsHidden(x,y));
-	
+			} while (targetTable[x][y]);
+			targetTable[x][y] = 1;
+			if (opponent->board.OnShot(x, y) == 0) { this->haveTarget = true; 
+			unfinishedTarget.push_back(new pair<int, int>(x, y));
+			}
 
 	}
-	if (opponent->board.OnShot(x, y)) this->haveTarget = true;
+	else {
+		pair<int, int>* k;
+		for (list <pair<int, int>*>::iterator it = unfinishedTarget.begin(); it != unfinishedTarget.end(); ++it)
+			if (checkNeighbors((*it)->first, ((*it)->second)){}
+	
+	
+	}
+	
+
+}
+bool AIPlayer::checkNeighbors(int x, int y){
+	if (unfinishedTarget.size() == 1){}//nie wiemy czy statek stoi pionowo czy poziomo
+
+	else{}
 
 }
 void AIPlayer::setShip(int size){

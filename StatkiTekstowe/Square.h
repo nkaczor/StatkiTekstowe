@@ -12,7 +12,7 @@ public:
 	bool IsHidden();
 	void MarkAsOccupied(Ship * ship);
 	string StateToString();
-	void Shot();
+	int Shot();
 private:
 	bool hidden;
 	bool occupied;
