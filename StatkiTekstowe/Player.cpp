@@ -24,7 +24,7 @@ bool Player::IsAlive(){
 }
 void Player::MakeMove(Player *opponent){
 		int x, y;
-		cout <<this->name<< ", podaj wspolrzedne celu x <1,10>, y <1,10>" << endl;
+		cout <<name<< ", podaj wspolrzedne celu x <1,10>, y <1,10>" << endl;
 		cin >> x >> y;
 		while (x < 1 || x>10 || y < 1 || y>10){
 			cout << "Z tymi danymi jest cos nie tak. Podaj jeszcze raz x i y" << endl;
@@ -59,7 +59,8 @@ void Player::setShip(int size){
 	char choice;
 	int x, y;
 	Ship* newShip = NULL;
-	cout << this->name<<", jak chcesz ustawic swoj statek o rozmiarze " << size << endl;
+	list <pair<int, int>*> squares;
+	cout <<name<<", jak chcesz ustawic swoj statek o rozmiarze " << size << endl;
 	cout << "wpisz v dla pionowo" << endl;
 	cout << "wpisz h dla poziomo" << endl;
 	cin >> choice;
@@ -67,6 +68,7 @@ void Player::setShip(int size){
 		cout << "Wpisales niepoprawna komende. Sprobuj jeszcze raz" << endl;
 		cin >> choice;
 	}
+	
 	if (choice == 'h'){
 
 		cout << "Podaj wspolrzedne pierwszego elementu dla tego statku x <1," << 11 - size << ">, y <1,10>" << endl;
@@ -77,7 +79,7 @@ void Player::setShip(int size){
 		}
 		x--; y--;
 		bool state = true;
-		list <pair<int, int>*> squares;
+		
 		for (int i = 0; i < size; i++)
 			if (!board.IsSquareFree(x + i, y)){ state = false; squares.clear(); }
 			else squares.push_back(new pair<int, int>(x + i, y));
@@ -89,13 +91,10 @@ void Player::setShip(int size){
 				state = true;
 				x--; y--;
 				for (int i = 0; i < size; i++)
-					if (!board.IsSquareFree(x + i, y)){ state = false; squares.clear(); }
+					if (!board.IsSquareFree(x + i, y)){ state = false; squares.clear(); break; }
 					else squares.push_back(new pair<int, int>(x + i, y));
 			}
-			newShip = new Ship(size);
-			board.SetSquares(squares, newShip);
-			this->listOfShips.push_back(*newShip);
-			this->numberOfShips++;
+			
 	}
 	else  {
 		cout << "Podaj wspolrzedne pierwszego elementu dla tego statku x <1,10>, y <1, " << 11 - size << ">" << endl;
@@ -106,7 +105,7 @@ void Player::setShip(int size){
 		}
 		x--; y--;
 		bool state = true;
-		list <pair<int, int>*> squares;
+		
 		for (int i = 0; i < size; i++)
 			if (!board.IsSquareFree(x, y + i)){ state = false; squares.clear(); break; }
 			else squares.push_back(new pair<int, int>(x, y + i));
@@ -122,12 +121,13 @@ void Player::setShip(int size){
 					if (!board.IsSquareFree(x, y + i)){ state = false; squares.clear(); }
 					else squares.push_back(new pair<int, int>(x, y + i));
 			}
-			newShip = new Ship(size);
-			board.SetSquares(squares,newShip);
-			this->listOfShips.push_back(*newShip);
-			this->numberOfShips++;
+			
 
 	}
+	newShip = new Ship(size);
+	board.SetSquares(squares, newShip);
+	listOfShips.push_back(*newShip);
+	numberOfShips++;
 }
 Player::~Player()
 {

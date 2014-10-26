@@ -7,7 +7,7 @@ AIPlayer::AIPlayer()
 {
 	name = "Computer";
 	setShips();
-	this->haveTarget = false;
+	haveTarget = false;
 	//board.ShowBoard(); //tylko do celow diagnostycznych
 
 }
@@ -22,7 +22,7 @@ void AIPlayer::MakeMove(Player *opponent){
 		} while (targetTable[x][y]);
 		targetTable[x][y] = 1;
 		if (opponent->board.OnShot(x, y) == 0) {
-			this->haveTarget = true;
+			haveTarget = true;
 			unfinishedTarget.push_back(new pair<int, int>(x, y));
 		}
 
@@ -36,9 +36,9 @@ void AIPlayer::MakeMove(Player *opponent){
 		for (vector <pair<int, int>*>::iterator it = unfinishedTarget.begin(); it != unfinishedTarget.end(); ++it)
 			if ((newTarget = checkNeighbors((*it)->first, ((*it)->second))) != NULL){
 			targetTable[x][y] = 1;
-			if (opponent->board.OnShot(x, y) == 1)
+			if (opponent->board.OnShot(x, y) == 1) //zestrzelony
 			{
-				this->haveTarget = false;
+				haveTarget = false;
 				unfinishedTarget.clear();
 			}
 			else unfinishedTarget.push_back(new pair<int, int>(x, y));
@@ -77,8 +77,8 @@ void AIPlayer::setShip(int size){
 	} while ((newShip = board.NewShipOrNull(x, y, size)) == NULL);
 
 
-	this->listOfShips.push_back(*newShip);
-	this->numberOfShips++;
+	listOfShips.push_back(*newShip);
+	numberOfShips++;
 
 
 }

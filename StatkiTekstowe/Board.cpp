@@ -11,10 +11,10 @@ Board::Board()
 
 int Board::OnShot(int x, int y){ //-1 pudlo 0 trafiony 1 trafiony zatopiony
 	
-	int result= this->squaresTable[x][y].Shot();
+	int result= squaresTable[x][y].Shot();
 	
 	cout << "Strzal na " << x + 1 << " " << y + 1 << endl;
-	cout << this->squaresTable[x][y].StateToString();
+	cout << squaresTable[x][y].StateToString();
 	if (result == 1) {
 		NumberOfAliveShips--;
 		cout << "I TO BYL STRZAL OSTATECZNY - ZATOPIONY!" << endl;
@@ -27,18 +27,18 @@ void Board::ShowBoard(){
 	for (int i = 0; i < 10; i++){
 		for (int j = 0; j < 10; j++)
 		{
-			cout << this->squaresTable[j][i].IsEmpty() << " ";
+			cout << squaresTable[j][i].IsEmpty() << " ";
 		}
 		cout << endl;
 	}
 	cout << endl;
 }
 bool Board::IsHidden(int x, int y){
-	return this->squaresTable[x][y].IsHidden();
+	return squaresTable[x][y].IsHidden();
 
 }
 string Board::StateToString(int x, int y){
-	return this->squaresTable[x][y].StateToString();
+	return squaresTable[x][y].StateToString();
 
 }
 bool Board::IsSquareFree(int x, int y){
@@ -56,7 +56,7 @@ bool Board::IsSquareFree(int x, int y){
 void Board::SetSquares(list <pair<int, int>*> squares, Ship *ship){
 	for each (pair<int, int>* point in squares)
 	{
-		this->squaresTable[point->first][point->second].MarkAsOccupied(ship);
+		squaresTable[point->first][point->second].MarkAsOccupied(ship);
 
 	}
 	NumberOfAliveShips++;

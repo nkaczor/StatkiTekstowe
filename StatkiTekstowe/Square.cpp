@@ -9,34 +9,34 @@ Square::Square()
 }
 
 void Square::MarkAsOccupied(Ship *ship){
-	this->occupied = true;
+	occupied = true;
 	this->ship = ship;
 
 }
 bool Square::IsEmpty(){
-	return !this->occupied;
+	return !occupied;
 
 }
 bool Square::IsOccupied(){
-	return this->occupied;
+	return occupied;
 
 }
 int Square::Shot(){
-	this->hidden = false;
-	if (this->occupied) {
-		this->ship->OnShot();
-		if (!this->ship->IsAlive()) { cout << "ZATOPIONY!" << endl; return 1; }
+	hidden = false;
+	if (occupied) {
+		ship->OnShot();
+		if (!ship->IsAlive()) { cout << "ZATOPIONY!" << endl; return 1; }
 		return 0;
 	}
 	else return -1;
 }
 bool Square::IsHidden(){
-	return this->hidden;
+	return hidden;
 
 }
 string Square::StateToString(){
-	if (this->hidden) return "nieodkryte \n";
-	else if (this->occupied) return "odkryte, zestrzelone \n";
+	if (hidden) return "nieodkryte \n";
+	else if (occupied) return "odkryte, zestrzelone \n";
 	else return "odkryte, pudlo \n";
 }
 Square::~Square()
