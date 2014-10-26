@@ -8,7 +8,7 @@ AIPlayer::AIPlayer()
 	name = "Computer";
 	setShips();
 	haveTarget = false;
-	//board.ShowBoard(); //tylko do celow diagnostycznych
+	//Board.ShowBoard(); //tylko do celow diagnostycznych
 
 }
 
@@ -21,7 +21,7 @@ void AIPlayer::MakeMove(Player *opponent){
 			y = rand() % 10;
 		} while (targetTable[x][y]);
 		targetTable[x][y] = 1;
-		if (opponent->board.OnShot(x, y) == 0) {
+		if (opponent->Board.OnShot(x, y) == 0) {
 			haveTarget = true;
 			unfinishedTarget.push_back(new pair<int, int>(x, y));
 		}
@@ -36,7 +36,7 @@ void AIPlayer::MakeMove(Player *opponent){
 		for (vector <pair<int, int>*>::iterator it = unfinishedTarget.begin(); it != unfinishedTarget.end(); ++it)
 			if ((newTarget = checkNeighbors((*it)->first, ((*it)->second))) != NULL){
 			targetTable[x][y] = 1;
-			if (opponent->board.OnShot(x, y) == 1) //zestrzelony
+			if (opponent->Board.OnShot(x, y) == 1) //zestrzelony
 			{
 				haveTarget = false;
 				unfinishedTarget.clear();
@@ -72,9 +72,9 @@ void AIPlayer::setShip(int size){
 		do{
 			x = rand() % 10;
 			y = rand() % 10;
-		} while (!board.IsSquareFree(x, y));
+		} while (!Board.IsSquareFree(x, y));
 
-	} while ((newShip = board.NewShipOrNull(x, y, size)) == NULL);
+	} while ((newShip = Board.NewShipOrNull(x, y, size)) == NULL);
 
 
 	listOfShips.push_back(*newShip);

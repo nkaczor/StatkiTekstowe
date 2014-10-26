@@ -12,12 +12,12 @@ Player::Player(string name)
 	this->numberOfShips = 0;
 	setShips();
 	cout << "Twoja plansza wyglada tak:" <<  endl;
-	board.ShowBoard();
+	Board.ShowBoard();
 	
 }
 
 bool Player::IsAlive(){
-	if (board.NumberOfAliveShips > 0)
+	if (Board.NumberOfAliveShips > 0)
 		return true;
 	return false;
 
@@ -30,8 +30,8 @@ void Player::MakeMove(Player *opponent){
 			cout << "Z tymi danymi jest cos nie tak. Podaj jeszcze raz x i y" << endl;
 			cin >> x >> y;
 		}
-		while (!opponent->board.IsHidden(x - 1, y - 1)){
-			cout << "To pole zosta³o ju¿ odkryte. Jego stan to: " << opponent->board.StateToString(x-1, y-1) << endl;
+		while (!opponent->Board.IsHidden(x - 1, y - 1)){
+			cout << "To pole zosta³o ju¿ odkryte. Jego stan to: " << opponent->Board.StateToString(x-1, y-1) << endl;
 			cout << "Podaj nowe wspolrzedne" << endl;
 			cin >> x >> y;
 			while (x < 1 || x>10 || y < 1 || y>10){
@@ -41,7 +41,7 @@ void Player::MakeMove(Player *opponent){
 		}
 		x--; y--;
 
-		opponent->board.OnShot(x, y);
+		opponent->Board.OnShot(x, y);
 
 
 }
@@ -81,7 +81,7 @@ void Player::setShip(int size){
 		bool state = true;
 		
 		for (int i = 0; i < size; i++)
-			if (!board.IsSquareFree(x + i, y)){ state = false; squares.clear(); }
+			if (!Board.IsSquareFree(x + i, y)){ state = false; squares.clear(); }
 			else squares.push_back(new pair<int, int>(x + i, y));
 
 			while (state == false){
@@ -91,7 +91,7 @@ void Player::setShip(int size){
 				state = true;
 				x--; y--;
 				for (int i = 0; i < size; i++)
-					if (!board.IsSquareFree(x + i, y)){ state = false; squares.clear(); break; }
+					if (!Board.IsSquareFree(x + i, y)){ state = false; squares.clear(); break; }
 					else squares.push_back(new pair<int, int>(x + i, y));
 			}
 			
@@ -107,7 +107,7 @@ void Player::setShip(int size){
 		bool state = true;
 		
 		for (int i = 0; i < size; i++)
-			if (!board.IsSquareFree(x, y + i)){ state = false; squares.clear(); break; }
+			if (!Board.IsSquareFree(x, y + i)){ state = false; squares.clear(); break; }
 			else squares.push_back(new pair<int, int>(x, y + i));
 
 			while (state == false){
@@ -118,14 +118,14 @@ void Player::setShip(int size){
 				state = true;
 				x--; y--;
 				for (int i = 0; i < size; i++)
-					if (!board.IsSquareFree(x, y + i)){ state = false; squares.clear(); }
+					if (!Board.IsSquareFree(x, y + i)){ state = false; squares.clear(); }
 					else squares.push_back(new pair<int, int>(x, y + i));
 			}
 			
 
 	}
 	newShip = new Ship(size);
-	board.SetSquares(squares, newShip);
+	Board.SetSquares(squares, newShip);
 	listOfShips.push_back(*newShip);
 	numberOfShips++;
 }

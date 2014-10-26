@@ -13,10 +13,10 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	GameManager *game = GameManager::GetGameManager();
 	game->PrepareGame();
-	//game->StartGame();
-	//game->ShowResults();
+	game->StartGame();
+	game->ShowResults();
 
-
+	
 	system("pause");
 
 	return 0;
