@@ -10,18 +10,22 @@ Board::Board()
 }
 
 int Board::OnShot(int x, int y){ //-1 pudlo 0 trafiony 1 trafiony zatopiony
+	
+	int result= this->squaresTable[x][y].Shot();
+	cout << "Strzal na " << x + 1 << " " << y + 1 << endl;
 	cout << this->squaresTable[x][y].StateToString();
-	return this->squaresTable[x][y].Shot();
-
+	if (result == 1) NumberOfAliveShips--;
+	return result;
 }
 void Board::ShowBoard(){
 	for (int i = 0; i < 10; i++){
 		for (int j = 0; j < 10; j++)
 		{
-			cout << this->squaresTable[i][j].IsEmpty() << " ";
+			cout << this->squaresTable[j][i].IsEmpty() << " ";
 		}
 		cout << endl;
 	}
+	cout << endl;
 }
 bool Board::IsHidden(int x, int y){
 	return this->squaresTable[x][y].IsHidden();

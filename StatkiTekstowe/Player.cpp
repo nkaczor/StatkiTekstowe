@@ -47,8 +47,8 @@ void Player::MakeMove(Player *opponent){
 void Player::setShips(){
 
 	setShip(3);
-	setShip(3);
-	/*setShip(2);
+	/*setShip(3);
+	setShip(2);
 	setShip(4);
 	setShip(5);
 	setShip(6);*/
@@ -66,7 +66,7 @@ void Player::setShip(int size){
 		cout << "Wpisales niepoprawna komende. Sprobuj jeszcze raz" << endl;
 		cin >> choice;
 	}
-	if (choice == 'v'){
+	if (choice == 'h'){
 
 		cout << "Podaj wspolrzedne pierwszego elementu dla tego statku x <1," << 11 - size << ">, y <1,10>" << endl;
 		cin >> x >> y;

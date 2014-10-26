@@ -35,9 +35,9 @@ bool Square::IsHidden(){
 
 }
 string Square::StateToString(){
-	if (this->hidden) return "nieodkryte";
-	else if (this->occupied) return "odkryte, zestrzelone";
-	else return "odkryte, pudlo";
+	if (this->hidden) return "nieodkryte \n";
+	else if (this->occupied) return "odkryte, zestrzelone \n";
+	else return "odkryte, pudlo \n";
 }
 Square::~Square()
 {
