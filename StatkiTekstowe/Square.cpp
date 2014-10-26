@@ -41,4 +41,5 @@ string Square::StateToString(){
 }
 Square::~Square()
 {
+	delete ship;
 }

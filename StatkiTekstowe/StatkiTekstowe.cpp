@@ -1,5 +1,8 @@
 // StatkiTekstowe.cpp : Defines the entry point for the console application.
 //
+//TODO
+//odzyskiwanie pamieci
+//podzial GameManagera
 
 #include "stdafx.h"
 #include <iostream>
@@ -10,7 +13,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	GameManager *game = GameManager::GetGameManager();
 	game->PrepareGame();
-//	game->StartGame();
+	//game->StartGame();
 	//game->ShowResults();
 
 
