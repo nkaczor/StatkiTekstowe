@@ -25,9 +25,12 @@ void GameManager::PrepareGame(){
 	while (you->IsAlive() && computer->IsAlive()){
 		you->MakeMove(computer);
 		if (computer->IsAlive() == false) break;
+		cout << endl << "Czas na ruch komputera:" << endl;
 		computer->MakeMove(you);
-	
+		cout << endl;
 	}
+	if (computer->IsAlive()) cout << "Przykro mi. Komputer pokonal Cie swoja sztuczna inteligencja" << endl;
+	else cout << "Brawo pokonales Komputer!" << endl;
 
 }
 GameManager::~GameManager()

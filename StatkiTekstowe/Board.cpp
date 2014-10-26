@@ -12,9 +12,15 @@ Board::Board()
 int Board::OnShot(int x, int y){ //-1 pudlo 0 trafiony 1 trafiony zatopiony
 	
 	int result= this->squaresTable[x][y].Shot();
+	
 	cout << "Strzal na " << x + 1 << " " << y + 1 << endl;
 	cout << this->squaresTable[x][y].StateToString();
-	if (result == 1) NumberOfAliveShips--;
+	if (result == 1) {
+		NumberOfAliveShips--;
+		cout << "I TO BYL STRZAL OSTATECZNY - ZATOPIONY!" << endl;
+	}
+	
+	
 	return result;
 }
 void Board::ShowBoard(){

@@ -8,6 +8,7 @@ Player::Player()
 }
 Player::Player(string name)
 {
+	this->name = name;
 	this->numberOfShips = 0;
 	setShips();
 	cout << "Twoja plansza wyglada tak:" <<  endl;
@@ -23,7 +24,7 @@ bool Player::IsAlive(){
 }
 void Player::MakeMove(Player *opponent){
 		int x, y;
-		cout << "Podaj wspolrzedne celu x <1,10>, y <1,10>" << endl;
+		cout <<this->name<< ", podaj wspolrzedne celu x <1,10>, y <1,10>" << endl;
 		cin >> x >> y;
 		while (x < 1 || x>10 || y < 1 || y>10){
 			cout << "Z tymi danymi jest cos nie tak. Podaj jeszcze raz x i y" << endl;
@@ -47,18 +48,18 @@ void Player::MakeMove(Player *opponent){
 void Player::setShips(){
 
 	setShip(3);
-	/*setShip(3);
+	setShip(3);
 	setShip(2);
 	setShip(4);
 	setShip(5);
-	setShip(6);*/
+	setShip(6);
 
 }
 void Player::setShip(int size){
 	char choice;
 	int x, y;
 	Ship* newShip = NULL;
-	cout << "Jak chcesz ustawic swoj statek o rozmiarze " << size << endl;
+	cout << this->name<<", jak chcesz ustawic swoj statek o rozmiarze " << size << endl;
 	cout << "wpisz v dla pionowo" << endl;
 	cout << "wpisz h dla poziomo" << endl;
 	cin >> choice;

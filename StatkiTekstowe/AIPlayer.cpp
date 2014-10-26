@@ -8,7 +8,7 @@ AIPlayer::AIPlayer()
 	name = "Computer";
 	setShips();
 	this->haveTarget = false;
-	board.ShowBoard(); //tylko do celow diagnostycznych
+	//board.ShowBoard(); //tylko do celow diagnostycznych
 
 }
 
