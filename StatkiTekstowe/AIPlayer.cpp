@@ -32,9 +32,9 @@ void AIPlayer::MakeMove(Player *opponent){
 			if (unfinishedTarget[0]->first == unfinishedTarget[1]->first) alignmentOfTarget = 'v';
 			else alignmentOfTarget = 'h';
 		}
-		pair<int, int>* newTarget;
+		
 		for (vector <pair<int, int>*>::iterator it = unfinishedTarget.begin(); it != unfinishedTarget.end(); ++it)
-			if ((newTarget = checkNeighbors((*it)->first, ((*it)->second))) != NULL){
+			if ( checkNeighbors((*it)->first, (*it)->second) != NULL){
 			targetTable[x][y] = 1;
 			if (opponent->Board.OnShot(x, y) == 1) //zestrzelony
 			{

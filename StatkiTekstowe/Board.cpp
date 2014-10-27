@@ -97,4 +97,5 @@ Ship* Board::NewShipOrNull(int x, int y, int size){
 }
 Board::~Board()
 {
+
 }
