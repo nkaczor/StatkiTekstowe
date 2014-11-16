@@ -10,10 +10,14 @@ public:
 	bool IsEmpty();
 	bool IsOccupied();
 	bool IsHidden();
+	
+	
+	friend class Board;
+	
+private:
 	void MarkAsOccupied(Ship * ship);
 	string StateToString();
 	int Shot();
-private:
 	bool hidden;
 	bool occupied;
 	Ship* ship;

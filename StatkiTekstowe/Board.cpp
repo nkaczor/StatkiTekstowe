@@ -33,6 +33,23 @@ void Board::ShowBoard(){
 	}
 	cout << endl;
 }
+string Board::MakeString(){
+	string result;
+	for (int i = 0; i < 10; i++){
+		for (int j = 0; j < 10; j++)
+		{
+			if(squaresTable[j][i].IsEmpty()) result=result+"O ";
+			else  result = result + "X ";
+		}
+		result = result + "\n";
+	}
+	return result;
+}
+
+ostream & operator<< (ostream &wyjscie,Board &s) {
+	
+	return wyjscie <<  s.MakeString();
+}
 bool Board::IsHidden(int x, int y){
 	return squaresTable[x][y].IsHidden();
 
@@ -54,9 +71,10 @@ bool Board::IsSquareFree(int x, int y){
 	return true;
 }
 void Board::SetSquares(list <pair<int, int>*> squares, Ship *ship){
-	for each (pair<int, int>* point in squares)
-	{
-		squaresTable[point->first][point->second].MarkAsOccupied(ship);
+	  list<pair<int, int>*>::iterator it;
+   for( it=squares.begin(); it!=squares.end(); ++it )
+   {
+		squaresTable[(*it)->first][(*it)->second].MarkAsOccupied(ship);
 
 	}
 	NumberOfAliveShips++;

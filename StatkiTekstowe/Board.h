@@ -15,6 +15,8 @@ public:
 	string StateToString(int x, int y);
 	int OnShot(int x, int y);
 	int NumberOfAliveShips;
+	friend ostream & operator<< (ostream &wyjscie,  Board &s);
+	string MakeString();
 private:
 	Square squaresTable[10][10];
 	

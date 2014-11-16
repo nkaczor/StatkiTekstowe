@@ -1,5 +1,6 @@
 #include "AIPlayer.h"
 #include <iostream>
+#include "stdlib.h"
 using namespace std;
 
 
@@ -14,6 +15,7 @@ AIPlayer::AIPlayer()
 
 void AIPlayer::MakeMove(Player *opponent){
 	int x, y;
+	pair <int, int>* candidate;
 	if (!haveTarget) {
 		alignmentOfTarget = 'u';
 		do{
@@ -21,7 +23,7 @@ void AIPlayer::MakeMove(Player *opponent){
 			y = rand() % 10;
 		} while (targetTable[x][y]);
 		targetTable[x][y] = 1;
-		if (opponent->Board.OnShot(x, y) == 0) {
+		if (opponent->board.OnShot(x, y) == 0) {
 			haveTarget = true;
 			unfinishedTarget.push_back(new pair<int, int>(x, y));
 		}
@@ -34,9 +36,11 @@ void AIPlayer::MakeMove(Player *opponent){
 		}
 		
 		for (vector <pair<int, int>*>::iterator it = unfinishedTarget.begin(); it != unfinishedTarget.end(); ++it)
-			if ( checkNeighbors((*it)->first, (*it)->second) != NULL){
+			if ( (candidate=checkNeighbors((*it)->first, (*it)->second)) != NULL){
+			x = candidate->first;
+			y = candidate->second;
 			targetTable[x][y] = 1;
-			if (opponent->Board.OnShot(x, y) == 1) //zestrzelony
+			if (opponent->board.OnShot(x, y) == 1) //zestrzelony
 			{
 				haveTarget = false;
 				unfinishedTarget.clear();
@@ -72,9 +76,9 @@ void AIPlayer::setShip(int size){
 		do{
 			x = rand() % 10;
 			y = rand() % 10;
-		} while (!Board.IsSquareFree(x, y));
+		} while (!board.IsSquareFree(x, y));
 
-	} while ((newShip = Board.NewShipOrNull(x, y, size)) == NULL);
+	} while ((newShip = board.NewShipOrNull(x, y, size)) == NULL);
 
 
 	listOfShips.push_back(*newShip);
